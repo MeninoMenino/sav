@@ -20,6 +20,8 @@ public class Score {
     private LocalDateTime createdDate;
 
     //Constructor
+    public Score(){}
+
     public Score(Integer idCandidate, Integer point, LocalDateTime createdDate){
         setIdCandidate(idCandidate);
         setPoint(point);
