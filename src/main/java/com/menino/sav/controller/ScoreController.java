@@ -23,12 +23,14 @@ public class ScoreController {
 
     //Lista todas as pontuações de votos
     @GetMapping
+    @CrossOrigin
     public List<Score> listScores() {
         return scoreServiceImplementation.listScores();
     }
 
     //Insere uma nova lista de pontuações
     @PostMapping
+    @CrossOrigin
     public List<Score> insertScores(@RequestBody List<InsertScoreDto> scores) {
         return scoreServiceImplementation.insertScores(scores);
     }
@@ -36,11 +38,13 @@ public class ScoreController {
 
     //Apurações
     @GetMapping("/prefeito")
+    @CrossOrigin
     public CountDto countVotesPrefeito(@RequestParam("idCounty") Integer idCounty){
         return countingService.count(idCounty, 1);
     }
 
     @GetMapping("/vereador")
+    @CrossOrigin
     public CountDto countVotesVereador(@RequestParam("idCounty") Integer idCounty){
         return countingService.count(idCounty, 2);
     }
