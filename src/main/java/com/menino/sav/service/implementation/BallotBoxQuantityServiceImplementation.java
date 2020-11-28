@@ -1,5 +1,6 @@
 package com.menino.sav.service.implementation;
 
+import com.menino.sav.exception.BallotBoxQuantityNotFoundException;
 import com.menino.sav.model.BallotBoxQuantity;
 import com.menino.sav.repository.BallotBoxQuantityRepository;
 import com.menino.sav.service.BallotBoxQuantityService;
@@ -20,7 +21,7 @@ public class BallotBoxQuantityServiceImplementation implements BallotBoxQuantity
         if(quantity.isPresent()){
             return quantity.get();
         } else {
-            throw new RuntimeException("BallotBoxQuantity not found");
+            throw new BallotBoxQuantityNotFoundException();
         }
     }
 }
