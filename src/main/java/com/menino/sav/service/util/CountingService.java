@@ -1,8 +1,11 @@
 package com.menino.sav.service.util;
 
 import com.menino.sav.dto.CandidateVotes;
+import com.menino.sav.dto.CountDto;
+import com.menino.sav.model.BallotBoxQuantity;
 import com.menino.sav.model.Candidate;
 import com.menino.sav.model.Score;
+import com.menino.sav.service.implementation.BallotBoxQuantityServiceImplementation;
 import com.menino.sav.service.implementation.CandidateServiceImplementation;
 import com.menino.sav.service.implementation.ScoreServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +21,10 @@ public class CountingService {
     CandidateServiceImplementation candidateServiceImplementation;
     @Autowired
     ScoreServiceImplementation scoreServiceImplementation;
+    @Autowired
+    BallotBoxQuantityServiceImplementation ballotBoxQuantityServiceImplementation;
 
-    public List<CandidateVotes> count(Integer idCounty, Integer idRole){
+    public CountDto count(Integer idCounty, Integer idRole){
         List<Candidate> candidates = candidateServiceImplementation.findByIdCountyAndIdRole(idCounty, idRole);
         List<Score> candidatesScores = new ArrayList<>();
         //Dto com candidato + votos
@@ -55,6 +60,17 @@ public class CountingService {
             totalVotes += candidateScore.getPoint();
             addNewCandidateVotes = true;
         }
-        return candidateVotes;
+
+        BallotBoxQuantity quantity = ballotBoxQuantityServiceImplementation.findById(idCounty);
+        double percentage;
+        if(candidateVotes.size() == 0 || quantity.getValue() == 0){
+            percentage = 0;
+        } else {
+            percentage = (100 * (candidatesScores.size())/candidateVotes.size())/quantity.getValue();
+        }
+
+        CountDto countDto = new CountDto(candidateVotes, totalVotes, percentage);
+
+        return countDto;
     }
 }

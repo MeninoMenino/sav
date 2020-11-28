@@ -1,6 +1,6 @@
 package com.menino.sav.controller;
 
-import com.menino.sav.dto.CandidateVotes;
+import com.menino.sav.dto.CountDto;
 import com.menino.sav.dto.InsertScoreDto;
 import com.menino.sav.model.Score;
 import com.menino.sav.service.implementation.CandidateServiceImplementation;
@@ -36,12 +36,12 @@ public class ScoreController {
 
     //Apurações
     @GetMapping("/prefeito")
-    public List<CandidateVotes> countVotesPrefeito(@RequestParam("idCounty") Integer idCounty){
+    public CountDto countVotesPrefeito(@RequestParam("idCounty") Integer idCounty){
         return countingService.count(idCounty, 1);
     }
 
     @GetMapping("/vereador")
-    public List<CandidateVotes> countVotesVereador(@RequestParam("idCounty") Integer idCounty){
+    public CountDto countVotesVereador(@RequestParam("idCounty") Integer idCounty){
         return countingService.count(idCounty, 2);
     }
 }

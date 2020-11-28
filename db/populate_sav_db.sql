@@ -9,6 +9,13 @@ INSERT INTO county VALUES(4, 2, "Guarulhos"); #ID 4
 INSERT INTO county VALUES(5, 3, "Rio de Janeiro"); #ID 5
 INSERT INTO county VALUES(6, 3, "Niterói"); #ID 6
 
+INSERT INTO ballot_box_quantity VALUES(1, 100, 1); #Recife
+INSERT INTO ballot_box_quantity VALUES(2, 100, 2); #Olinda
+INSERT INTO ballot_box_quantity VALUES(3, 100, 3); #São Paulo
+INSERT INTO ballot_box_quantity VALUES(4, 100, 4); #Guarulhos
+INSERT INTO ballot_box_quantity VALUES(5, 100, 5); #Rio de Janeiro
+INSERT INTO ballot_box_quantity VALUES(6, 100, 6); #Niterói
+
 INSERT INTO role VALUES(1, 1); #ID 1 = Prefeito
 INSERT INTO role VALUES(2, 2); #ID 2 = Vereador
 
