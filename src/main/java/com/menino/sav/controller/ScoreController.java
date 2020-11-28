@@ -1,10 +1,11 @@
 package com.menino.sav.controller;
 
+import com.menino.sav.dto.CandidateVotes;
 import com.menino.sav.dto.InsertScoreDto;
-import com.menino.sav.model.Candidate;
 import com.menino.sav.model.Score;
 import com.menino.sav.service.implementation.CandidateServiceImplementation;
 import com.menino.sav.service.implementation.ScoreServiceImplementation;
+import com.menino.sav.service.util.CountingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -17,6 +18,8 @@ public class ScoreController {
     ScoreServiceImplementation scoreServiceImplementation;
     @Autowired
     CandidateServiceImplementation candidateServiceImplementation;
+    @Autowired
+    CountingService countingService;
 
     //Lista todas as pontuações de votos
     @GetMapping
@@ -32,9 +35,13 @@ public class ScoreController {
 
 
     //Apurações
+    @GetMapping("/prefeito")
+    public List<CandidateVotes> countVotesPrefeito(@RequestParam("idCounty") Integer idCounty){
+        return countingService.count(idCounty, 1);
+    }
 
-    @GetMapping("/mayor")
-    public List<Candidate> apurateMayorVotes(@RequestParam("idCounty") Integer idCounty, @RequestParam("idRole") Integer idRole){
-        return candidateServiceImplementation.findByIdCountyAndIdRole(idCounty, idRole);
+    @GetMapping("/vereador")
+    public List<CandidateVotes> countVotesVereador(@RequestParam("idCounty") Integer idCounty){
+        return countingService.count(idCounty, 2);
     }
 }

@@ -28,4 +28,9 @@ public class ScoreServiceImplementation implements ScoreService {
         List<Score> scores = dtoToModel.convertScore(scoresDto);
         return scoreRepository.saveAll(scores);
     }
+
+    @Override
+    public List<Score> findByIdCandidate(Integer idCandidate){
+        return scoreRepository.findByIdCandidate(idCandidate);
+    }
 }

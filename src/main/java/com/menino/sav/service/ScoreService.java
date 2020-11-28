@@ -10,4 +10,6 @@ public interface ScoreService {
     List<Score> listScores();
 
     List<Score> insertScores(List<InsertScoreDto> scores);
+
+    List<Score> findByIdCandidate(Integer idCandidate);
 }
