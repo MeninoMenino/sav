@@ -2,11 +2,13 @@ package com.menino.sav.service.util;
 
 import com.menino.sav.dto.InsertScoreDto;
 import com.menino.sav.model.Score;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class DtoToModel {
 
     public List<Score> convertScore(List<InsertScoreDto> scoresDto){

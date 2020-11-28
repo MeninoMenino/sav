@@ -1,6 +1,6 @@
 package com.menino.sav.dto;
 
-public class InsertScoreDto {
+public class InsertScoreDto{
 
     private Integer idCandidate;
     private Integer point;
