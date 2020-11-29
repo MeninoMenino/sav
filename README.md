@@ -2,8 +2,9 @@
 
 REST API desenvolvida com Spring para registrar votos, e fazer a contagem dos votos de acordo com o município.
 
-Schema do banco de dados: db/sav_schema
-Query para popular banco de dados: db/populate_sav_db
+Schema do banco de dados: db/sav_schema \
+Query para popular banco de dados: db/populate_sav_db \
+Link da API no Heroku: https://sav-ustore.herokuapp.com/score
 
 
 
